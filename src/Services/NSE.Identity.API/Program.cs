@@ -1,12 +1,18 @@
+using Carter;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using NSE.Identity.API.Data;
+using NSE.Identity.API.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCarter(new DependencyContextAssemblyCatalog(typeof(Program).Assembly), config =>
+{
+    config.WithModule<IdentityEndpoints>();
+});
 
 builder.Services
     .AddDbContext<AppDbContext>(
@@ -26,16 +32,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/hello-world", async () =>
-{
-    var content = await new StringContent("Hello World!").ReadAsStringAsync();
-    return Results.Ok(content);
-})
-.WithName("GetHelloWorld")
-.WithOpenApi();
+app.MapGroup("api/v1").MapCarter();
 
 app.Run();
 
