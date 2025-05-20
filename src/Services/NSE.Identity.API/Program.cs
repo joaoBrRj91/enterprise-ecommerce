@@ -36,7 +36,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGroup("api/v1").MapCarter();
+app.MapGroup("api/identity/v1").MapCarter();
 
 app.Run();
 

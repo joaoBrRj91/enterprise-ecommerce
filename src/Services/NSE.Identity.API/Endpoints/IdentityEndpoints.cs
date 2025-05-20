@@ -6,7 +6,7 @@ public class IdentityEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/identity-user", async () =>
+        app.MapGet("/user", async () =>
         {
             var content = await new StringContent("User Identity").ReadAsStringAsync();
             return Results.Ok(content);
