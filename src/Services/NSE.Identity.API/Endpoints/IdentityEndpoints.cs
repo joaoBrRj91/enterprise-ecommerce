@@ -9,7 +9,7 @@ public class IdentityEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/sign-in", async ([FromBody] UserLogin userLogin, SignInManager<IdentityUser> signInManager) =>
+        app.MapPost("/sign-in", async ([FromBody] UserData userLogin, SignInManager<IdentityUser> signInManager) =>
         {
             var identityResult = await signInManager
             .PasswordSignInAsync(userLogin.Email, userLogin.Password, isPersistent: false, lockoutOnFailure: true);

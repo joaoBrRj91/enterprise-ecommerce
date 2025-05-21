@@ -30,8 +30,4 @@
     <ProjectReference Include="..\..\Building Blocks\NSE.Shared\NSE.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Validations\" />
-  </ItemGroup>
-
 </Project>
