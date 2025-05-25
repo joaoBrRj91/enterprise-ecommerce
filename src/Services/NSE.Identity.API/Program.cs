@@ -16,28 +16,15 @@ var builder = WebApplication.CreateBuilder(args);
 var configution = builder.Configuration;
 
 builder.Services
-    .AddCommonApiServices(configution)
     .AddAuthenticateServices(configution)
+    .AddCommonApiServices(configution)
     .AddInfraestructureServices(configution)
     .AddBusinessServices();
 
 var app = builder.Build();
 
-//Extension Methods for use
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
-}
-
-
-app.UseHttpsRedirection();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapGroup("api/identity/v1").WithOpenApi().MapCarter();
+app.UseAuthenticateServices()
+    .UseCommonApiServices();
 
 app.Run();
 

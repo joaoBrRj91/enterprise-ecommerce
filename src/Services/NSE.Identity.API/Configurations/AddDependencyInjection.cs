@@ -11,7 +11,7 @@ using System.Text;
 
 namespace NSE.Identity.API.Configurations
 {
-    public static class DependencyInjection
+    public static class AddDependencyInjection
     {
         public static IServiceCollection AddCommonApiServices(this IServiceCollection services, IConfiguration configuration)
         {
