@@ -2,7 +2,7 @@
 
 namespace NSE.Identity.API.Configurations
 {
-    public static class UseDependencyInjection
+    public static class UseAppConfig
     {
         public static WebApplication UseAuthenticateServices(this WebApplication app)
         {

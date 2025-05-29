@@ -7,11 +7,12 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using NSE.Identity.API.Data;
 using NSE.Identity.API.Endpoints;
+using NSE.Identity.API.Providers;
 using System.Text;
 
 namespace NSE.Identity.API.Configurations
 {
-    public static class AddDependencyInjection
+    public static class AddAppConfig
     {
         public static IServiceCollection AddCommonApiServices(this IServiceCollection services, IConfiguration configuration)
         {
@@ -63,6 +64,8 @@ namespace NSE.Identity.API.Configurations
                     ValidIssuer = appSettings.Issue
                 };
             });
+
+            services.AddSingleton<IAuthProvider, AuthProvider>();
 
             return services;
         }
