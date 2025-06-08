@@ -1,4 +1,4 @@
-﻿using NSE.Identity.API.Models;
+﻿using NSE.Shared.Models.Auth;
 
 namespace NSE.Identity.API.Providers
 {

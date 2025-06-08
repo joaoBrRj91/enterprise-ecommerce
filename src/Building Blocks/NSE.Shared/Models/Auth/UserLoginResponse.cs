@@ -1,4 +1,4 @@
-﻿namespace NSE.Identity.API.Models;
+﻿namespace NSE.Shared.Models.Auth;
 
 public class UserLoginResponse
 {
