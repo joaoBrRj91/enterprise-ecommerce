@@ -1,18 +1,31 @@
 ﻿using NSE.Shared.Models.Auth;
 using NSE.WebApp.MVC.Models;
+using NSE.WebApp.MVC.Providers.Integration;
+using NSE.WebApp.MVC.Providers.Utils;
 
 namespace NSE.WebApp.MVC.Services.Integrations.Http
 {
-    public class AuthHttpIntegrationService : IAuthHttpIntegrationService
+    public class AuthHttpIntegrationService(IHttpClientIntegrationProvider httpClientIntegrationProvider,
+        IJsonProvider jsonDeserializerProvider) 
+        : IAuthHttpIntegrationService
     {
-        public Task<UserLoginResponse> RegisterAsync(UserRegisterViewModel userRegisterViewModel)
+        public async Task<UserLoginResponse> SignInAsync(UserLoginViewModel userLoginViewModel)
         {
-            throw new NotImplementedException();
+            var response = await httpClientIntegrationProvider.PostAsync(userLoginViewModel,
+                endpontService: "IdentityEndpoint",
+                routeResource: "sign-in");
+
+            return await jsonDeserializerProvider.DeserializeResponse<UserLoginResponse>(response, thowingExceptionBadRequest: true);
         }
 
-        public Task<UserLoginResponse> SignInAsync(UserLoginViewModel userLoginViewModel)
+        public async Task<UserLoginResponse> RegisterAsync(UserRegisterViewModel userRegisterViewModel)
         {
-            throw new NotImplementedException();
+            var response = await httpClientIntegrationProvider.PostAsync(userRegisterViewModel,
+                endpontService: "IdentityEndpoint",
+                routeResource: "new-account");
+
+            return await jsonDeserializerProvider.DeserializeResponse<UserLoginResponse>(response, thowingExceptionBadRequest: true);
+
         }
     }
 }
