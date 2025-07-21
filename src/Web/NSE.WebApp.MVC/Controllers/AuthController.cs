@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NSE.WebApp.MVC.Models;
+using NSE.WebApp.MVC.Models.Identity;
+using NSE.WebApp.MVC.Services.Integrations.Http;
 
 namespace NSE.WebApp.MVC.Controllers
 {
     public class AuthController : Controller
     {
+        private readonly IAuthHttpIntegrationService authHttpIntegrationService;
+
+        public AuthController(IAuthHttpIntegrationService authHttpIntegrationService)
+        {
+            this.authHttpIntegrationService = authHttpIntegrationService;
+        }
+
         [HttpGet("new-account")]
         public IActionResult Register()
         {
