@@ -1,5 +1,5 @@
 ﻿using NSE.Shared.Models.Auth;
-using NSE.WebApp.MVC.Models;
+using NSE.WebApp.MVC.Models.Identity;
 
 namespace NSE.WebApp.MVC.Services.Integrations.Http
 {
