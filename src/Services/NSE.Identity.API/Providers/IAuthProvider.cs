@@ -1,4 +1,5 @@
-﻿using NSE.Shared.Models.Auth;
+﻿
+using NSE.Shared.Models.Auths;
 
 namespace NSE.Identity.API.Providers
 {

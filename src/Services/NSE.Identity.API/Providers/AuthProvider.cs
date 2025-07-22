@@ -2,8 +2,7 @@
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NSE.Identity.API.Configurations;
-using NSE.Identity.API.Models;
-using NSE.Shared.Models.Auth;
+using NSE.Shared.Models.Auths;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

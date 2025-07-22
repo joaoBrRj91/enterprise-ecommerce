@@ -2,45 +2,32 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NSE.Identity.API.Models;
-using NSE.Identity.API.Providers;
+using NSE.Identity.API.Services.NewAccount;
+using NSE.Identity.API.Services.SignIn;
+using NSE.Shared.Models.Common.Validations;
 
 namespace NSE.Identity.API.Endpoints;
 
-public class IdentityEndpoints(IAuthProvider authProvider) : ICarterModule
+public class IdentityEndpoints(
+    ISignInValidationBusinessService SignInValidationBusinessService,
+    IUserRegisterValidationBusinessService UserRegisterValidationBusinessService) : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/sign-in", async ([FromBody] UserData userLogin, SignInManager<IdentityUser> signInManager) =>
+        app.MapPost("/sign-in", async ([FromBody] UserData userLogin) =>
         {
-            var identityResult = await signInManager
-            .PasswordSignInAsync(userLogin.Email, userLogin.Password, isPersistent: false, lockoutOnFailure: true);
-
-            if (identityResult.Succeeded)
-                return Results.Ok(await authProvider.GenerateTokenAsync(userLogin.Email));
-
-            return Results.BadRequest();
-
+            return CreateHttpResultByResponseResult(await SignInValidationBusinessService.SignInHandler(userLogin));
         })
         .WithName("GetIdentityUser");
 
 
-        app.MapPost("/new-account", async ([FromBody] UserRegister userRegister, UserManager<IdentityUser> userManager) =>
+        app.MapPost("/new-account", async ([FromBody] UserRegister userRegister) =>
         {
-            var identityUser = new IdentityUser
-            {
-                UserName = userRegister.Email,
-                Email = userRegister.Email,
-                EmailConfirmed = false
-            };
-
-            var identityResult = await userManager.CreateAsync(identityUser, userRegister.Password);
-
-            if (identityResult.Succeeded)
-                return Results.Created(string.Empty, await authProvider.GenerateTokenAsync(userRegister.Email));
-
-            return Results.BadRequest();
-
+            return CreateHttpResultByResponseResult(await UserRegisterValidationBusinessService.UserRegisterHandler(userRegister));
         })
          .WithName("CreateIdentityUser");
     }
+
+    private IResult CreateHttpResultByResponseResult(ResponseResult responseResult) 
+        => responseResult.IsSuccess ? Results.Ok(responseResult) : Results.BadRequest(responseResult);
 }
