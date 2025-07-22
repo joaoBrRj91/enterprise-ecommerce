@@ -4,7 +4,8 @@ namespace NSE.WebApp.MVC.Providers.Utils
 {
     public class JsonProvider : IJsonProvider
     {
-        public async Task<TResponse> DeserializeResponse<TResponse>(HttpResponseMessage httpResponse, bool thowingExceptionBadRequest = true) where TResponse : class
+        public async Task<TResponse> DeserializeResponse<TResponse>(HttpResponseMessage httpResponse, bool thowingExceptionBadRequest = true) 
+            where TResponse : class
         {
             if (httpResponse.IsSuccessStatusCode)
             {

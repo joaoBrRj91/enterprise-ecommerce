@@ -4,15 +4,8 @@ using NSE.WebApp.MVC.Services.Integrations.Http;
 
 namespace NSE.WebApp.MVC.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController(IAuthHttpIntegrationService authHttpIntegrationService) : Controller
     {
-        private readonly IAuthHttpIntegrationService authHttpIntegrationService;
-
-        public AuthController(IAuthHttpIntegrationService authHttpIntegrationService)
-        {
-            this.authHttpIntegrationService = authHttpIntegrationService;
-        }
-
         [HttpGet("new-account")]
         public IActionResult Register()
         {
@@ -20,7 +13,7 @@ namespace NSE.WebApp.MVC.Controllers
         }
 
         [HttpPost("new-account")]
-        public async Task<IActionResult> RegisterAsync(UserRegisterViewModel userRegister)
+        public async Task<IActionResult> Register(UserRegisterViewModel userRegister)
         {
             if (!ModelState.IsValid) return View(userRegister);
             // Here you would typically call your API to register the user
@@ -37,7 +30,7 @@ namespace NSE.WebApp.MVC.Controllers
         }
 
         [HttpPost("sign-in")]
-        public async Task<IActionResult> LoginAsync(UserLoginViewModel userLogin)
+        public async Task<IActionResult> Login(UserLoginViewModel userLogin)
         {
             if (!ModelState.IsValid) return View(userLogin);
             // Here you would typically call your API to log in the user

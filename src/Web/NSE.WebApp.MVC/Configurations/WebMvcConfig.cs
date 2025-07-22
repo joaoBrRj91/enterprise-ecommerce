@@ -14,11 +14,16 @@ namespace NSE.WebApp.MVC.Configurations
 
         public static IApplicationBuilder UseWebMvcConfiguration(this WebApplication app, IWebHostEnvironment env)
         {
-            if (!env.IsDevelopment())
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();

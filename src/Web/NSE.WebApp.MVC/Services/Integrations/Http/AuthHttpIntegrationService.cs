@@ -1,4 +1,4 @@
-﻿using NSE.Shared.Models.Auth;
+﻿using NSE.Shared.Models.Auths;
 using NSE.WebApp.MVC.Models.Identity;
 using NSE.WebApp.MVC.Providers.Integration;
 using NSE.WebApp.MVC.Providers.Utils;
