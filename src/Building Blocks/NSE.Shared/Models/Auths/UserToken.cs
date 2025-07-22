@@ -1,4 +1,4 @@
-﻿namespace NSE.Shared.Models.Auth;
+﻿namespace NSE.Shared.Models.Auths;
 
 public class UserToken
 {
