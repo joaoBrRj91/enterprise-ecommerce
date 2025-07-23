@@ -4,7 +4,7 @@
     {
         public const string AdminPolicy = "Admin";
         public const string UserPolicy = "User";
-        public const string LoginPath = "/login";
+        public const string LoginPath = "/sign-in";
         public const string AccessDeniedPath = "/forbidden";
     }
 }
