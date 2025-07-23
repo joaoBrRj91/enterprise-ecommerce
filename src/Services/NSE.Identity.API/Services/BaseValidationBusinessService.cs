@@ -20,9 +20,9 @@ public abstract class BaseValidationBusinessService(IValidationIntegrityModel Va
         if (isResponseSucceeded)
         {
             var userRegisterResponse = await AuthProvider.GenerateTokenAsync(userEmail);
-            return (true, ValidationIntegrity.BuildResponseResult(userRegisterResponse));
+            return (isResponseSucceeded, ValidationIntegrity.BuildResponseResult(userRegisterResponse));
         }
 
-        return (false, default);
+        return (isResponseSucceeded, default);
     }
 }
