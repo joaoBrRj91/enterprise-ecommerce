@@ -1,13 +1,13 @@
 ﻿using NSE.Shared.Models.Auths;
-using NSE.Shared.Models.Common.Validations;
+using NSE.Shared.Models.Common;
+using NSE.Shared.Providers;
 using NSE.WebApp.MVC.Models.Identity;
 using NSE.WebApp.MVC.Providers.Integration;
-using NSE.WebApp.MVC.Providers.Utils;
 
 namespace NSE.WebApp.MVC.Services.Integrations.Http
 {
     public class AuthHttpIntegrationService(IHttpClientIntegrationProvider httpClientIntegrationProvider,
-        IJsonProvider jsonDeserializerProvider) 
+        IJsonResponseProvider jsonResponseProvider) 
         : IAuthHttpIntegrationService
     {
         public async Task<ResponseResult> SignInAsync(UserLoginViewModel userLoginViewModel)
@@ -16,7 +16,7 @@ namespace NSE.WebApp.MVC.Services.Integrations.Http
                 endpontService: "IdentityEndpoint",
                 routeResource: "sign-in");
 
-            return await jsonDeserializerProvider.DeserializeResponse<ResponseResult>(response, thowingExceptionBadRequest: true);
+            return await jsonResponseProvider.DeserializeResponse<ResponseResult>(response, thowingExceptionBadRequest: true);
         }
 
         public async Task<ResponseResult> RegisterAsync(UserRegisterViewModel userRegisterViewModel)
@@ -25,7 +25,7 @@ namespace NSE.WebApp.MVC.Services.Integrations.Http
                 endpontService: "IdentityEndpoint",
                 routeResource: "new-account");
 
-            return await jsonDeserializerProvider.DeserializeResponse<ResponseResult>(response, thowingExceptionBadRequest: true);
+            return await jsonResponseProvider.DeserializeResponse<ResponseResult>(response, thowingExceptionBadRequest: true);
 
         }
     }

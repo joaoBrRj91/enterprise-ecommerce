@@ -1,9 +1,9 @@
 ﻿namespace NSE.Shared.Models.Auths;
 
-public class UserToken
+public record UserToken
 {
-    public string Id { get; set; }
-    public string Email { get; set; }
-    public IEnumerable<UserClaim> Claims { get; set; }
+    public string Id { get; init; }
+    public string Email { get; init; }
+    public IEnumerable<UserClaim> Claims { get; init; }
 }
 

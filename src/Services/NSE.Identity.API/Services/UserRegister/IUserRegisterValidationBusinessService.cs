@@ -1,5 +1,5 @@
 ﻿using NSE.Identity.API.Models;
-using NSE.Shared.Models.Common.Validations;
+using NSE.Shared.Models.Common;
 
 namespace NSE.Identity.API.Services.NewAccount;
 

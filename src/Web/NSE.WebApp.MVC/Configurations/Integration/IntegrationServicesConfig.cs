@@ -1,5 +1,5 @@
-﻿using NSE.WebApp.MVC.Providers.Integration;
-using NSE.WebApp.MVC.Providers.Utils;
+﻿using NSE.Shared.Providers;
+using NSE.WebApp.MVC.Providers.Integration;
 using NSE.WebApp.MVC.Services.Integrations.Http;
 
 namespace NSE.WebApp.MVC.Configurations.Integration
@@ -12,7 +12,7 @@ namespace NSE.WebApp.MVC.Configurations.Integration
             services.Configure<IntegrationSettings>(appSettingsSection);
 
             services.AddHttpClient<IHttpClientIntegrationProvider, HttpClientIntegrationProvider>();
-            services.AddSingleton<IJsonProvider, JsonProvider>();
+            services.AddSingleton<IJsonResponseProvider, JsonResponseProvider>();
             services.AddScoped<IAuthHttpIntegrationService, AuthHttpIntegrationService>();
             return services;
         }

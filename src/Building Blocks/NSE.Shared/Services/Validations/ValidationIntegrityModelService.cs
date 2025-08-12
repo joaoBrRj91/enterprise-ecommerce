@@ -1,6 +1,8 @@
-﻿namespace NSE.Shared.Models.Common.Validations;
+﻿using NSE.Shared.Models.Common;
 
-public sealed class ValidationIntegrityModel : IValidationIntegrityModel
+namespace NSE.Shared.Services.Validations;
+
+public sealed class ValidationIntegrityModelService : IValidationIntegrityModelService
 {
     private readonly ICollection<string> _errors = [];
     private const string ERROR_FIELD_DATA_PREFIX = "MessageError";
@@ -29,7 +31,7 @@ public sealed class ValidationIntegrityModel : IValidationIntegrityModel
 
     public void AddError(string errorMessage)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(errorMessage, nameof(errorMessage));
+        ArgumentException.ThrowIfNullOrWhiteSpace(errorMessage, nameof(errorMessage));
 
         var newCurrentErrorCounter = _errors.Count + 1;
         _errors.Add($"{ERROR_FIELD_DATA_PREFIX}_{newCurrentErrorCounter}_{errorMessage}");
