@@ -10,7 +10,7 @@ namespace NSE.WebApp.MVC.Controllers
 {
     public class AuthController(
         IAuthHttpIntegrationService authHttpIntegrationService,
-        IAutenticationJwtService autenticationJwtService) : Controller
+        IAutenticationJwtService autenticationJwtService) : MainController
     {
         [HttpGet("new-account")]
         public IActionResult Register()
@@ -22,10 +22,11 @@ namespace NSE.WebApp.MVC.Controllers
         public async Task<IActionResult> Register(UserRegisterViewModel userRegister)
         {
             if (!ModelState.IsValid) return View(userRegister);
-            // Here you would typically call your API to register the user
-            // For example:
-            // var response = await _apiService.RegisterUserAsync(userRegister);
-            // if (!response.IsSuccess) return View(userRegister);
+
+            var response = await authHttpIntegrationService.RegisterAsync(userRegister);
+
+            if (HasErrorsInIntegration(response)) return View(userRegister);
+
             return RedirectToAction("Index", "Home");
         }
 
@@ -39,10 +40,11 @@ namespace NSE.WebApp.MVC.Controllers
         public async Task<IActionResult> Login(UserLoginViewModel userLogin)
         {
             if (!ModelState.IsValid) return View(userLogin);
-            // Here you would typically call your API to log in the user
-            // For example:
-            // var response = await _apiService.LoginUserAsync(userLogin);
-            // if (!response.IsSuccess) return View(userLogin);
+
+            var response = await authHttpIntegrationService.SignInAsync(userLogin);
+
+            if (HasErrorsInIntegration(response)) return View(userLogin);
+
             return RedirectToAction("Index", "Home");
         }
 
