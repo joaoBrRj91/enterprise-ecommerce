@@ -1,10 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using NSE.Shared.Models.Auths;
+using NSE.Shared.Services.Auths.Jwt;
 using NSE.WebApp.MVC.Models.Identity;
 using NSE.WebApp.MVC.Services.Integrations.Http;
 
 namespace NSE.WebApp.MVC.Controllers
 {
-    public class AuthController(IAuthHttpIntegrationService authHttpIntegrationService) : Controller
+    public class AuthController(
+        IAuthHttpIntegrationService authHttpIntegrationService,
+        IAutenticationJwtService autenticationJwtService) : Controller
     {
         [HttpGet("new-account")]
         public IActionResult Register()
@@ -38,6 +44,14 @@ namespace NSE.WebApp.MVC.Controllers
             // var response = await _apiService.LoginUserAsync(userLogin);
             // if (!response.IsSuccess) return View(userLogin);
             return RedirectToAction("Index", "Home");
+        }
+
+        private async Task GeneratedLoginAsync(UserLoginResponse userLoginResponse)
+        {
+            var (claimsIdentity, authenticationProperties) = autenticationJwtService
+                .BuildTokenPrincipalInformations(userLoginResponse, authenticationType: AuthType.Cookie);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsIdentity, authenticationProperties);
         }
     }
 }
