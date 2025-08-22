@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using NSE.Shared.Models.Auths;
+using NSE.Shared.Models.Common;
 using NSE.Shared.Services.Auths.Jwt;
 using NSE.WebApp.MVC.Models.Identity;
 using NSE.WebApp.MVC.Services.Integrations.Http;
@@ -25,9 +26,7 @@ namespace NSE.WebApp.MVC.Controllers
 
             var response = await authHttpIntegrationService.RegisterAsync(userRegister);
 
-            if (HasErrorsInIntegration(response)) return View(userRegister);
-
-            return RedirectToAction("Index", "Home");
+            return await CreateResultByResponseIntegration(response, userRegister);
         }
 
         [HttpGet("sign-in")]
@@ -43,11 +42,11 @@ namespace NSE.WebApp.MVC.Controllers
 
             var response = await authHttpIntegrationService.SignInAsync(userLogin);
 
-            if (HasErrorsInIntegration(response)) return View(userLogin);
-
-            return RedirectToAction("Index", "Home");
+            return await CreateResultByResponseIntegration(response, userLogin);
         }
 
+
+        #region Private Aux Methods
         private async Task GeneratedLoginAsync(UserLoginResponse userLoginResponse)
         {
             var (claimsIdentity, authenticationProperties) = autenticationJwtService
@@ -55,5 +54,15 @@ namespace NSE.WebApp.MVC.Controllers
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsIdentity, authenticationProperties);
         }
+
+        private async Task<ActionResult> CreateResultByResponseIntegration(ResponseResult response, object requestData)
+        {
+            if (HasErrorsInIntegration(response)) return View(requestData);
+
+            await GeneratedLoginAsync((response.Data as UserLoginResponse)!);
+
+            return RedirectToAction("Index", "Home");
+        }
+        #endregion
     }
 }

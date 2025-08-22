@@ -6,6 +6,8 @@ using NSE.WebApp.MVC.Providers.Integration;
 
 namespace NSE.WebApp.MVC.Services.Integrations.Http
 {
+
+    // TODO: Refatorar para ser de forma abastrata, pois sera usado por diversos contextos
     public class AuthHttpIntegrationService(IHttpClientIntegrationProvider httpClientIntegrationProvider,
         IJsonResponseProvider jsonResponseProvider) 
         : IAuthHttpIntegrationService
