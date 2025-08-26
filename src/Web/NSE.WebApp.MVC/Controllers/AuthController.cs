@@ -46,6 +46,13 @@ namespace NSE.WebApp.MVC.Controllers
             return await CreateResultByResponseIntegration(response, userLogin, returnUrl);
         }
 
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Index", "Home");
+        }
+
 
         #region Private Aux Methods
         private async Task GeneratedLoginAsync(UserLoginResponse userLoginResponse)
