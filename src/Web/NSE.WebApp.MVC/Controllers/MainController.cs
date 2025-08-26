@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NSE.Shared.Models.Common;
+using NSE.WebApp.MVC.Models;
+using System.Net;
 
 namespace NSE.WebApp.MVC.Controllers;
 
@@ -19,7 +21,7 @@ public abstract class MainController : Controller
             return true;
         }
 
-        if(!responseResult.IsSuccess)
+        if (!responseResult.IsSuccess)
         {
             ModelState.AddModelError(string.Empty, GENERIC_ERROR);
             return true;
@@ -27,5 +29,4 @@ public abstract class MainController : Controller
 
         return false;
     }
-
 }

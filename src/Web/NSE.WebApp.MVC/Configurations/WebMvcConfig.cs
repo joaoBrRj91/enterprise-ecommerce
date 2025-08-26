@@ -1,4 +1,5 @@
 ﻿using NSE.WebApp.MVC.Configurations.Auth;
+using NSE.WebApp.MVC.Middlewares;
 
 namespace NSE.WebApp.MVC.Configurations
 {
@@ -20,7 +21,8 @@ namespace NSE.WebApp.MVC.Configurations
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/error/500");
+                app.UseStatusCodePagesWithRedirects("/error/{0}");
                 app.UseHsts();
             }
 
@@ -31,6 +33,8 @@ namespace NSE.WebApp.MVC.Configurations
             app.UseRouting();
 
             app.UseAuthConfiguration(env);
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.MapControllerRoute(
                 name: "default",

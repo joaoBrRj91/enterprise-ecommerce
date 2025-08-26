@@ -30,19 +30,20 @@ namespace NSE.WebApp.MVC.Controllers
         }
 
         [HttpGet("sign-in")]
-        public IActionResult Login()
+        public IActionResult Login(string? returnUrl = null)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost("sign-in")]
-        public async Task<IActionResult> Login(UserLoginViewModel userLogin)
+        public async Task<IActionResult> Login(UserLoginViewModel userLogin, string? returnUrl = null)
         {
             if (!ModelState.IsValid) return View(userLogin);
 
             var response = await authHttpIntegrationService.SignInAsync(userLogin);
 
-            return await CreateResultByResponseIntegration(response, userLogin);
+            return await CreateResultByResponseIntegration(response, userLogin, returnUrl);
         }
 
 
@@ -55,13 +56,15 @@ namespace NSE.WebApp.MVC.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsIdentity, authenticationProperties);
         }
 
-        private async Task<ActionResult> CreateResultByResponseIntegration(ResponseResult response, object requestData)
+        private async Task<ActionResult> CreateResultByResponseIntegration(ResponseResult response, object requestData, string? returnUrl = null)
         {
             if (HasErrorsInIntegration(response)) return View(requestData);
 
             await GeneratedLoginAsync((response.Data as UserLoginResponse)!);
 
-            return RedirectToAction("Index", "Home");
+            if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
+
+            return LocalRedirect(returnUrl);
         }
         #endregion
     }

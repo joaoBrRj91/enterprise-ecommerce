@@ -30,5 +30,6 @@ namespace NSE.WebApp.MVC.Services.Integrations.Http
             return await jsonResponseProvider.DeserializeResponse<ResponseResult>(response, thowingExceptionBadRequest: true);
 
         }
+
     }
 }

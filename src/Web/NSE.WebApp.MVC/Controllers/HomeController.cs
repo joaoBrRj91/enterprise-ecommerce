@@ -4,7 +4,7 @@ using NSE.WebApp.MVC.Models;
 
 namespace NSE.WebApp.MVC.Controllers;
 
-public class HomeController : Controller
+public class HomeController : MainController
 {
     private readonly ILogger<HomeController> _logger;
 
@@ -23,9 +23,9 @@ public class HomeController : Controller
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    [Route("erro/{statusCode:length(3,3)}")]
+    public IActionResult Error(int statusCode)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View("Error", new ErrorViewModel().CreateErrorModelByStatusCode(statusCode));
     }
 }

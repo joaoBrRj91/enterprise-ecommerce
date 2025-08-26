@@ -20,7 +20,6 @@ public class IdentityEndpoints(
         })
         .WithName("GetIdentityUser");
 
-
         app.MapPost("/new-account", async ([FromBody] UserRegister userRegister) =>
         {
             return CreateHttpResultByResponseResult(await UserRegisterValidationBusinessService.UserRegisterHandler(userRegister));
