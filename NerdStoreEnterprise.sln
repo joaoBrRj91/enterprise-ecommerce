@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{069512E6-1674-4FE3-8826-5DE6F1992FC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Catalog.API", "src\Services\NSE.Catalog.API\NSE.Catalog.API.csproj", "{81DA493E-C087-4A4D-879C-198982A1C37F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{71C9EAF6-79C2-4BD2-8136-00847664AB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71C9EAF6-79C2-4BD2-8136-00847664AB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71C9EAF6-79C2-4BD2-8136-00847664AB6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DA493E-C087-4A4D-879C-198982A1C37F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DA493E-C087-4A4D-879C-198982A1C37F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DA493E-C087-4A4D-879C-198982A1C37F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DA493E-C087-4A4D-879C-198982A1C37F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,8 @@ Global
 		{F351FFC2-04F2-4E59-AFC3-39E6FD87C537} = {60F9A476-E76A-4C22-B558-E5D8FE54FD3A}
 		{3F969879-C74C-4F27-B009-7DC86DF5C9B8} = {88A68449-0633-4C99-A4A2-602503D34DC8}
 		{71C9EAF6-79C2-4BD2-8136-00847664AB6A} = {3F969879-C74C-4F27-B009-7DC86DF5C9B8}
+		{069512E6-1674-4FE3-8826-5DE6F1992FC2} = {E56439C3-D6AB-4206-ABD3-6043FC1BE61C}
+		{81DA493E-C087-4A4D-879C-198982A1C37F} = {069512E6-1674-4FE3-8826-5DE6F1992FC2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2C7BF102-D870-416A-AD37-F2E30F45CBB6}
