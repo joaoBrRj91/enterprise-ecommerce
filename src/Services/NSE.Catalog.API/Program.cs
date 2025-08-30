@@ -1,31 +1,20 @@
-using Microsoft.EntityFrameworkCore;
-using NSE.Catalog.API.Data;
-using NSE.Catalog.API.Models;
+using NSE.Catalog.API.Configurations;
+using NSE.Catalog.API.Configurations.SetupApp;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add Dependency Injection
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Configuration.ConfigureAppSettingsEnvironment(builder.Environment.ContentRootPath);
 
-builder.Services.AddDbContext<CatalogContext>(
-            opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
+var configution = builder.Configuration;
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services
+    .AddCommonApiServices(configution)
+    .AddInfraestructureServices(configution);
+
+
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-
-app.MapGet("/", () => new StringContent("Hello Catalog API"))
-   .WithName("ValidationStartApp")
-   .WithOpenApi();
+app.UseCommonApiServices();
 
 app.Run();
