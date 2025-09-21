@@ -1,4 +1,4 @@
-﻿namespace NSE.Identity.API.Configurations
+﻿namespace NSE.Shared.Configurations
 {
     public class AppSettings
     {

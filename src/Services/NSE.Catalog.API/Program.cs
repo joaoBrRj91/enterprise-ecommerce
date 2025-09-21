@@ -9,8 +9,8 @@ var configution = builder.Configuration;
 
 builder.Services
     .AddCommonApiServices(configution)
-    .AddInfraestructureServices(configution);
-
+    .AddInfraestructureServices(configution)
+    .AddAuthenticateServices(configution);
 
 
 var app = builder.Build();

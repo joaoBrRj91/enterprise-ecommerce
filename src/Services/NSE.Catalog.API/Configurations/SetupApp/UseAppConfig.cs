@@ -18,4 +18,11 @@ public static class UseAppConfig
         app.MapGroup("api/catalog/v1").WithOpenApi().MapCarter();
         return app;
     }
+
+    public static WebApplication UseAuthenticateServices(this WebApplication app)
+    {
+        app.UseAuthentication();
+        app.UseAuthorization();
+        return app;
+    }
 }

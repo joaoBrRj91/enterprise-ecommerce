@@ -33,6 +33,11 @@ public static class AddAppConfig
 
     }
 
+    public static IServiceCollection AddAuthenticateServices(this IServiceCollection services, IConfiguration configuration)
+    {
+        return services;
+    }
+
     public static IServiceCollection AddInfraestructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<CatalogContext>(
