@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 using NSE.Identity.API.Data;
 using NSE.Identity.API.Endpoints;
 using NSE.Identity.API.Providers;
-using NSE.Shared.Services.Validations;
+using NSE.Providers.Validations;
 using System.Text;
 
 namespace NSE.Identity.API.Configurations
@@ -88,7 +88,7 @@ namespace NSE.Identity.API.Configurations
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
             services.AddValidatorsFromAssembly(typeof(Program).Assembly);
-            services.AddScoped<IValidationIntegrityModelService, ValidationIntegrityModelService>();
+            services.AddScoped<IValidationIntegrityModelProvider, ValidationIntegrityModelProvider>();
             return services;
         }
     }

@@ -5,8 +5,8 @@ using NSE.Identity.API.Models;
 using NSE.Identity.API.Providers;
 using NSE.Identity.API.Services;
 using NSE.Identity.API.Validations;
+using NSE.Providers.Validations;
 using NSE.Shared.Models.Common;
-using NSE.Shared.Services.Validations;
 
 namespace NSE.Identity.API.Services.NewAccount;
 
@@ -14,7 +14,7 @@ public sealed class UserRegisterValidationBusinessService(
     UserManager<IdentityUser> UserManager,
     IAuthProvider AuthProvider,
     UserRegisterModelValidator ValidationRules,
-    IValidationIntegrityModelService ValidationIntegrity)
+    IValidationIntegrityModelProvider ValidationIntegrity)
     : BaseValidationBusinessService(ValidationIntegrity, AuthProvider), IUserRegisterValidationBusinessService
 {
     public async Task<ResponseResult> UserRegisterHandler(UserRegister userRegister)

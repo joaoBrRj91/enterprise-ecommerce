@@ -1,7 +1,7 @@
 ﻿using NSE.Shared.Exceptions;
 using System.Text.Json;
 
-namespace NSE.Shared.Providers;
+namespace NSE.Providers.Json;
 
 public class JsonResponseProvider : IJsonResponseProvider
 {

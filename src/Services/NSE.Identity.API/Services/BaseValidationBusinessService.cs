@@ -1,11 +1,11 @@
 ﻿using FluentValidation.Results;
 using NSE.Identity.API.Providers;
+using NSE.Providers.Validations;
 using NSE.Shared.Models.Common;
-using NSE.Shared.Services.Validations;
 
 namespace NSE.Identity.API.Services;
 
-public abstract class BaseValidationBusinessService(IValidationIntegrityModelService ValidationIntegrity, IAuthProvider AuthProvider)
+public abstract class BaseValidationBusinessService(IValidationIntegrityModelProvider ValidationIntegrity, IAuthProvider AuthProvider)
 {
     protected (bool, ResponseResult) DataIsValid(ValidationResult validationResult)
     {

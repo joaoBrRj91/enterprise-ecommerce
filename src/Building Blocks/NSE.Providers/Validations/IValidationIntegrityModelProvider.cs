@@ -1,8 +1,8 @@
 ﻿using NSE.Shared.Models.Common;
 
-namespace NSE.Shared.Services.Validations;
+namespace NSE.Providers.Validations;
 
-public interface IValidationIntegrityModelService
+public interface IValidationIntegrityModelProvider
 {
     /// <summary>
     /// Build Response Result for process endpoint data

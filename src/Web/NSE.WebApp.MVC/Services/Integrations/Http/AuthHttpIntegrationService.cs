@@ -1,6 +1,6 @@
-﻿using NSE.Shared.Models.Auths;
+﻿using NSE.Providers.Json;
+using NSE.Shared.Models.Auths;
 using NSE.Shared.Models.Common;
-using NSE.Shared.Providers;
 using NSE.WebApp.MVC.Models.Identity;
 using NSE.WebApp.MVC.Providers.Integration;
 

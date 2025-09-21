@@ -3,8 +3,8 @@ using NSE.Identity.API.Models;
 using NSE.Identity.API.Providers;
 using NSE.Identity.API.Services;
 using NSE.Identity.API.Validations;
+using NSE.Providers.Validations;
 using NSE.Shared.Models.Common;
-using NSE.Shared.Services.Validations;
 
 namespace NSE.Identity.API.Services.SignIn;
 
@@ -12,7 +12,7 @@ public sealed class SignInValidationBusinessService(
     SignInManager<IdentityUser> SignInManager,
     IAuthProvider AuthProvider,
     UserDataModelValidator ValidationRules,
-    IValidationIntegrityModelService ValidationIntegrity)
+    IValidationIntegrityModelProvider ValidationIntegrity)
     : BaseValidationBusinessService(ValidationIntegrity,AuthProvider), ISignInValidationBusinessService
 {
 

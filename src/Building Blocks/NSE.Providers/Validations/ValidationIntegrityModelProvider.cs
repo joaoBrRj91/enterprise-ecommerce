@@ -1,8 +1,8 @@
 ﻿using NSE.Shared.Models.Common;
 
-namespace NSE.Shared.Services.Validations;
+namespace NSE.Providers.Validations;
 
-public sealed class ValidationIntegrityModelService : IValidationIntegrityModelService
+public sealed class ValidationIntegrityModelProvider : IValidationIntegrityModelProvider
 {
     private readonly ICollection<string> _errors = [];
     private const string ERROR_FIELD_DATA_PREFIX = "MessageError";

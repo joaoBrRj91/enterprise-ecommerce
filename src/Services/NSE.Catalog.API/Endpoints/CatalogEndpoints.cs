@@ -8,15 +8,18 @@ public class CatalogEndpoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-       app.MapGet("/products", async ([FromServices] IProductRepository productRepository) =>
+       app.MapGet("/products",
+           async ([FromServices] IProductRepository productRepository) =>
        {
            return Results.Ok(await productRepository.GetAll());
        })
         .WithName("GetProducts")
-        .Produces<List<Product>>(StatusCodes.Status200OK);
+        .Produces<IEnumerable<Product>>(StatusCodes.Status200OK);
 
 
-        app.MapGet("/products/{id:guid}", async ([FromServices] IProductRepository productRepository, [FromRoute] Guid id) =>
+        app.MapGet("/products/{id:guid}",
+            async ([FromServices] IProductRepository productRepository,
+            [FromRoute] Guid id) =>
         {
             return Results.Ok(await productRepository.GetById(id));
         })
