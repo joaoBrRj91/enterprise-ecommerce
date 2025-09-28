@@ -3,10 +3,10 @@ using System.Text.Json;
 
 namespace NSE.API.Provider.Json;
 
-public class JsonResponseProvider : IJsonResponseProvider
+public class JsonResponseService : IJsonResponseService
 {
     private readonly JsonSerializerOptions _serializerOptions;
-    public JsonResponseProvider()
+    public JsonResponseService()
     {
         _serializerOptions = new()
         {

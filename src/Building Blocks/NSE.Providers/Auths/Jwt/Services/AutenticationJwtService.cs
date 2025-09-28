@@ -4,9 +4,9 @@ using NSE.Shared.Models.Auths;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace NSE.API.Provider.Auths.Jwt;
+namespace NSE.API.Provider.Auths.Jwt.Services;
 
-public sealed class AutenticationJwtProvider : IAutenticationJwtProvider
+public sealed class AutenticationJwtService : IAutenticationJwtService
 {
     private const string JWT_CLAIM_TYPE = "JWT";
 

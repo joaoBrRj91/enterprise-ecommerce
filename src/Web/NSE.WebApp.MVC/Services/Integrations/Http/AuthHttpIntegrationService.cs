@@ -9,7 +9,7 @@ namespace NSE.WebApp.MVC.Services.Integrations.Http
 
     // TODO: Refatorar para ser de forma abastrata, pois sera usado por diversos contextos
     public class AuthHttpIntegrationService(IHttpClientIntegrationProvider httpClientIntegrationProvider,
-        IJsonResponseProvider jsonResponseProvider) 
+        IJsonResponseService jsonResponseProvider) 
         : IAuthHttpIntegrationService
     {
         public async Task<ResponseResult> SignInAsync(UserLoginViewModel userLoginViewModel)

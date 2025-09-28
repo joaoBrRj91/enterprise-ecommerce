@@ -1,6 +1,6 @@
 ﻿namespace NSE.API.Provider.Json;
 
-public interface IJsonResponseProvider
+public interface IJsonResponseService
 {
     /// <summary>
     /// Deserializer  <see cref="HttpResponseMessage"/> in a type of class  <see cref="TResponse"/>

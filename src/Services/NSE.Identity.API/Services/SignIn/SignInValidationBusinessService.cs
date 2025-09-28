@@ -12,7 +12,7 @@ public sealed class SignInValidationBusinessService(
     SignInManager<IdentityUser> SignInManager,
     IAuthProvider AuthProvider,
     UserDataModelValidator ValidationRules,
-    IValidationIntegrityModelProvider ValidationIntegrity)
+    IValidationIntegrityModelService ValidationIntegrity)
     : BaseValidationBusinessService(ValidationIntegrity,AuthProvider), ISignInValidationBusinessService
 {
 

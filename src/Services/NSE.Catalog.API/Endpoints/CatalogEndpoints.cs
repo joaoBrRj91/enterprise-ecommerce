@@ -24,6 +24,7 @@ public class CatalogEndpoints : ICarterModule
             return Results.Ok(await productRepository.GetById(id));
         })
         .WithName("GetProduct")
-        .Produces<Product>(StatusCodes.Status200OK);
+        .Produces<Product>(StatusCodes.Status200OK)
+        .RequireAuthorization("CatalogRead");
     }
 }

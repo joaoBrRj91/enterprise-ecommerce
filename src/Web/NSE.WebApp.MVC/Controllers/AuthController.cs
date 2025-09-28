@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using NSE.API.Provider.Auths.Jwt;
+using NSE.API.Provider.Auths.Jwt.Services;
 using NSE.Shared.Models.Auths;
 using NSE.Shared.Models.Common;
 using NSE.WebApp.MVC.Models.Identity;
@@ -11,7 +11,7 @@ namespace NSE.WebApp.MVC.Controllers
 {
     public class AuthController(
         IAuthHttpIntegrationService authHttpIntegrationService,
-        IAutenticationJwtProvider autenticationJwtProvider) : MainController
+        IAutenticationJwtService autenticationJwtProvider) : MainController
     {
         [HttpGet("new-account")]
         public IActionResult Register()

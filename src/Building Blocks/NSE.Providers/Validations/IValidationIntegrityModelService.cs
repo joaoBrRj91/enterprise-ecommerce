@@ -2,7 +2,7 @@
 
 namespace NSE.API.Provider.Validations;
 
-public interface IValidationIntegrityModelProvider
+public interface IValidationIntegrityModelService
 {
     /// <summary>
     /// Build Response Result for process endpoint data

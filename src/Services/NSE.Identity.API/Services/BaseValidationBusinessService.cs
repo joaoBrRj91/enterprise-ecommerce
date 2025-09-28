@@ -5,7 +5,7 @@ using NSE.Shared.Models.Common;
 
 namespace NSE.Identity.API.Services;
 
-public abstract class BaseValidationBusinessService(IValidationIntegrityModelProvider ValidationIntegrity, IAuthProvider AuthProvider)
+public abstract class BaseValidationBusinessService(IValidationIntegrityModelService ValidationIntegrity, IAuthProvider AuthProvider)
 {
     protected (bool, ResponseResult) DataIsValid(ValidationResult validationResult)
     {

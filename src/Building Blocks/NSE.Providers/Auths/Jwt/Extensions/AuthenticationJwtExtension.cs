@@ -9,7 +9,7 @@ namespace NSE.API.Provider.Auths.Jwt.Extensions;
 
 public static class AuthenticationJwtExtension
 {
-    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration, PolicyClaim? policyClaim = default)
     {
         var appSettingsSection = configuration.GetSection("AppSettings");
         services.Configure<AppSettings>(appSettingsSection);
@@ -35,6 +35,13 @@ public static class AuthenticationJwtExtension
                 ValidIssuer = appSettings.Issue
             };
         });
+
+        if (policyClaim is not null)
+        {
+            services.AddAuthorizationBuilder()
+                .AddPolicy(policyClaim.PolicyName, policy =>
+                    policy.RequireClaim(policyClaim.ClaimType, policyClaim.ClaimValue));
+        }
 
         return services;
     }

@@ -1,4 +1,4 @@
-﻿using NSE.API.Provider.Auths.Jwt;
+﻿using NSE.API.Provider.Auths.Jwt.Services;
 using NSE.API.Provider.Json;
 using NSE.WebApp.MVC.Providers.Integration;
 using NSE.WebApp.MVC.Services.Integrations.Http;
@@ -13,9 +13,9 @@ namespace NSE.WebApp.MVC.Configurations.Integration
             services.Configure<IntegrationSettings>(appSettingsSection);
 
             services.AddHttpClient<IHttpClientIntegrationProvider, HttpClientIntegrationProvider>();
-            services.AddSingleton<IJsonResponseProvider, JsonResponseProvider>();
+            services.AddSingleton<IJsonResponseService, JsonResponseService>();
             services.AddScoped<IAuthHttpIntegrationService, AuthHttpIntegrationService>();
-            services.AddScoped<IAutenticationJwtProvider, AutenticationJwtProvider>();
+            services.AddScoped<IAutenticationJwtService, AutenticationJwtService>();
             return services;
         }
     }

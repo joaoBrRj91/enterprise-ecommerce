@@ -66,7 +66,7 @@ namespace NSE.Identity.API.Configurations
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
             services.AddValidatorsFromAssembly(typeof(Program).Assembly);
-            services.AddScoped<IValidationIntegrityModelProvider, ValidationIntegrityModelProvider>();
+            services.AddScoped<IValidationIntegrityModelService, ValidationIntegrityModelService>();
             return services;
         }
     }

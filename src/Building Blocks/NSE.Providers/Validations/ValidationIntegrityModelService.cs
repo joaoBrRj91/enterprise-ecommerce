@@ -2,7 +2,7 @@
 
 namespace NSE.API.Provider.Validations;
 
-public sealed class ValidationIntegrityModelProvider : IValidationIntegrityModelProvider
+public sealed class ValidationIntegrityModelService : IValidationIntegrityModelService
 {
     private readonly ICollection<string> _errors = [];
     private const string ERROR_FIELD_DATA_PREFIX = "MessageError";

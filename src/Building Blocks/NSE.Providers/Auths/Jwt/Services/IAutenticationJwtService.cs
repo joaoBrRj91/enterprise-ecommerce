@@ -2,9 +2,9 @@
 using NSE.Shared.Models.Auths;
 using System.Security.Claims;
 
-namespace NSE.API.Provider.Auths.Jwt;
+namespace NSE.API.Provider.Auths.Jwt.Services;
 
-public interface IAutenticationJwtProvider
+public interface IAutenticationJwtService
 {
     public (ClaimsPrincipal, AuthenticationProperties) BuildTokenPrincipalInformations(
         UserLoginResponse userLoginResponse,

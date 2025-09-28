@@ -14,7 +14,7 @@ public sealed class UserRegisterValidationBusinessService(
     UserManager<IdentityUser> UserManager,
     IAuthProvider AuthProvider,
     UserRegisterModelValidator ValidationRules,
-    IValidationIntegrityModelProvider ValidationIntegrity)
+    IValidationIntegrityModelService ValidationIntegrity)
     : BaseValidationBusinessService(ValidationIntegrity, AuthProvider), IUserRegisterValidationBusinessService
 {
     public async Task<ResponseResult> UserRegisterHandler(UserRegister userRegister)

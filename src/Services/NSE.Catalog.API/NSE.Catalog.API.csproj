@@ -29,6 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\Building Blocks\NSE.Providers\NSE.API.Provider.csproj" />
 		<ProjectReference Include="..\..\Building Blocks\NSE.Shared\NSE.Shared.csproj" />
 	</ItemGroup>
 

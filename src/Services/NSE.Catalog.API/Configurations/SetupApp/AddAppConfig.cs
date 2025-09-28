@@ -1,6 +1,7 @@
 ﻿using Carter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using NSE.API.Provider.Auths.Jwt.Extensions;
 using NSE.Catalog.API.Data;
 using NSE.Catalog.API.Endpoints;
 using NSE.Catalog.API.Models;
@@ -35,6 +36,12 @@ public static class AddAppConfig
 
     public static IServiceCollection AddAuthenticateServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddJwtAuthentication(configuration, new Shared.Configurations.PolicyClaim
+        {
+            PolicyName = "CatalogRead",
+            ClaimType = "Catalog",
+            ClaimValue = "Read"
+        });
         return services;
     }
 
