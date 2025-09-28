@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using NSE.API.Provider.Auths.Jwt.Extensions;
+using NSE.API.Provider.Validations;
 using NSE.Identity.API.Data;
 using NSE.Identity.API.Endpoints;
 using NSE.Identity.API.Providers;
-using NSE.Providers.Auths.Jwt.Extensions;
-using NSE.Providers.Validations;
 using System.Text;
 
 namespace NSE.Identity.API.Configurations

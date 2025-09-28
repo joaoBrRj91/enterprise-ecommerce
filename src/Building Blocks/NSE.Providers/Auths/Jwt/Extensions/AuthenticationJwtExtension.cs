@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using NSE.Shared.Configurations;
 using System.Text;
 
-namespace NSE.Providers.Auths.Jwt.Extensions;
+namespace NSE.API.Provider.Auths.Jwt.Extensions;
 
 public static class AuthenticationJwtExtension
 {

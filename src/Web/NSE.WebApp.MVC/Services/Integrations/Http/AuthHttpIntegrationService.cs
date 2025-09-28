@@ -1,4 +1,4 @@
-﻿using NSE.Providers.Json;
+﻿using NSE.API.Provider.Json;
 using NSE.Shared.Models.Auths;
 using NSE.Shared.Models.Common;
 using NSE.WebApp.MVC.Models.Identity;

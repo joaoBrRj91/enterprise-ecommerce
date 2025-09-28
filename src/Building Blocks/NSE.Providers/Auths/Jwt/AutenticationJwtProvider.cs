@@ -4,7 +4,7 @@ using NSE.Shared.Models.Auths;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace NSE.Providers.Auths.Jwt;
+namespace NSE.API.Provider.Auths.Jwt;
 
 public sealed class AutenticationJwtProvider : IAutenticationJwtProvider
 {

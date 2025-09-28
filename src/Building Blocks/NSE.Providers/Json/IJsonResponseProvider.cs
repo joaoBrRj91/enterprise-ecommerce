@@ -1,4 +1,5 @@
-﻿namespace NSE.Providers.Json;
+﻿namespace NSE.API.Provider.Json;
+
 public interface IJsonResponseProvider
 {
     /// <summary>

@@ -2,7 +2,7 @@
 using NSE.Shared.Models.Auths;
 using System.Security.Claims;
 
-namespace NSE.Providers.Auths.Jwt;
+namespace NSE.API.Provider.Auths.Jwt;
 
 public interface IAutenticationJwtProvider
 {

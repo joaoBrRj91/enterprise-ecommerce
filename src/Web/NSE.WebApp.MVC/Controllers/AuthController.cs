@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
-using NSE.Providers.Auths.Jwt;
+using NSE.API.Provider.Auths.Jwt;
 using NSE.Shared.Models.Auths;
 using NSE.Shared.Models.Common;
 using NSE.WebApp.MVC.Models.Identity;

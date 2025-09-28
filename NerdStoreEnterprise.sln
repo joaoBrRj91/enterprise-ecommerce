@@ -36,9 +36,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cart", "Cart", "{82E3175B-F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Cart.API", "src\Services\NSE.Cart.API\NSE.Cart.API.csproj", "{BB5C67F8-28EB-4D5F-9D6F-8400A5B5C960}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{6F8660BE-7C80-48AE-9F2D-BA0A0DD627E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Provider", "Provider", "{6F8660BE-7C80-48AE-9F2D-BA0A0DD627E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Providers", "src\Building Blocks\NSE.Providers\NSE.Providers.csproj", "{0C143953-2640-4D8E-B96C-DA9468A1719F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.API.Provider", "src\Building Blocks\NSE.Providers\NSE.API.Provider.csproj", "{0C143953-2640-4D8E-B96C-DA9468A1719F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

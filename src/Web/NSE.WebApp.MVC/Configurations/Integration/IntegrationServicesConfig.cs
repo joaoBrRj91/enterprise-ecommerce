@@ -1,5 +1,5 @@
-﻿using NSE.Providers.Auths.Jwt;
-using NSE.Providers.Json;
+﻿using NSE.API.Provider.Auths.Jwt;
+using NSE.API.Provider.Json;
 using NSE.WebApp.MVC.Providers.Integration;
 using NSE.WebApp.MVC.Services.Integrations.Http;
 

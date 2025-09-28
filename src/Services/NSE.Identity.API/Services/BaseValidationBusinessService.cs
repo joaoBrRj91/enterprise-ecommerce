@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
+using NSE.API.Provider.Validations;
 using NSE.Identity.API.Providers;
-using NSE.Providers.Validations;
 using NSE.Shared.Models.Common;
 
 namespace NSE.Identity.API.Services;

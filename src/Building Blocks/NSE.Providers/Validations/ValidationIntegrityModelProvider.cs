@@ -1,6 +1,6 @@
 ﻿using NSE.Shared.Models.Common;
 
-namespace NSE.Providers.Validations;
+namespace NSE.API.Provider.Validations;
 
 public sealed class ValidationIntegrityModelProvider : IValidationIntegrityModelProvider
 {

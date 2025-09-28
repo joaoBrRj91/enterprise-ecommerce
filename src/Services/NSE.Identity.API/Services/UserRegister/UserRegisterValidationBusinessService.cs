@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NSE.API.Provider.Validations;
 using NSE.Identity.API.Models;
 using NSE.Identity.API.Providers;
 using NSE.Identity.API.Services;
 using NSE.Identity.API.Validations;
-using NSE.Providers.Validations;
 using NSE.Shared.Models.Common;
 
 namespace NSE.Identity.API.Services.NewAccount;
